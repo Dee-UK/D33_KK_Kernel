@@ -498,46 +498,17 @@ static int rk3188_cpufreq_init_cpu0(struct cpufreq_policy *policy)
 	clk_enable_dvfs(cpu_clk);
 
 	if(rk_tflag()){
-//leolas rk3188T frec limit default 1416
-#if defined(CONFIG_RK3188T_LIMIT_OFF)
-	#ifdef CONFIG_RK3188T_CPU1416
+#if defined(CONFIG_RK3188_CPU_OVERRIDE)
 		#define RK3188_T_LIMIT_FREQ	(1416 * 1000)
-	#endif
-	#ifdef CONFIG_RK3188T_CPU1608
-		#define RK3188_T_LIMIT_FREQ	(1608 * 1000)
-	#endif
-	#ifdef CONFIG_RK3188T_CPU1704
-		#define RK3188_T_LIMIT_FREQ	(1704 * 1000)
-	#endif
-	#ifdef CONFIG_RK3188T_CPU1800
-		#define RK3188_T_LIMIT_FREQ	(1800 * 1000)
-	#endif
-#else
-		#define RK3188_T_LIMIT_FREQ	(1416 * 1000)
-#endif
 		dvfs_clk_enable_limit(cpu_clk, 0, RK3188_T_LIMIT_FREQ * 1000);
-		printk("***************************************\n");
-		printk("**************RK3188T*****************\n");
-		printk("***************************************\n");
-		printk("WARNING:This cpu have the rk3188T flag.\n");
-		printk("***************************************\n");
-		printk("**************RK3188T******************\n");
-		printk("***************************************\n");
 		for (i = 0; freq_table[i].frequency != CPUFREQ_TABLE_END; i++) {
 			if (freq_table[i].frequency > RK3188_T_LIMIT_FREQ) {
 				printk("cpufreq: delete arm freq(%u)\n", freq_table[i].frequency);
 				freq_table[i].frequency = CPUFREQ_TABLE_END;
 			}
 		}
+#endif
 	} 
-	else{
-		printk("***************************************\n");
-		printk("***************************************\n");
-		printk("This CPU SEEMS TO BE A GENUINE RK3188.\n");
-		printk("***************************************\n");
-		printk("***************************************\n");
-	} 
-
 	freq_wq = alloc_workqueue("rk3188_cpufreqd", WQ_NON_REENTRANT | WQ_MEM_RECLAIM | WQ_HIGHPRI | WQ_FREEZABLE, 1);
 	rk3188_cpufreq_temp_limit_init(policy);
 #ifdef CPU_FREQ_DVFS_TST

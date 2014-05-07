@@ -7,11 +7,7 @@ deps_arch/arm/mach-rk3188/cpufreq.o := \
     $(wildcard include/config/rk30/cpu/freq/limit/by/temp.h) \
     $(wildcard include/config/soc/rk3188m.h) \
     $(wildcard include/config/rk/gpu/798.h) \
-    $(wildcard include/config/rk3188t/limit/off.h) \
-    $(wildcard include/config/rk3188t/cpu1416.h) \
-    $(wildcard include/config/rk3188t/cpu1608.h) \
-    $(wildcard include/config/rk3188t/cpu1704.h) \
-    $(wildcard include/config/rk3188t/cpu1800.h) \
+    $(wildcard include/config/rk3188/cpu/override.h) \
     $(wildcard include/config/power/supply.h) \
     $(wildcard include/config/smp.h) \
   include/linux/clk.h \

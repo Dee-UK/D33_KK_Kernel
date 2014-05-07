@@ -2381,22 +2381,12 @@ void __init board_clock_init(void)
 	//dvfs_set_arm_logic_volt(dvfs_cpu_logic_table, cpu_dvfs_table, dep_cpu2core_table);	
 	dvfs_set_freq_volt_table(clk_get(NULL, "cpu"), dvfs_arm_table);
 	dvfs_set_freq_volt_table(clk_get(NULL, "gpu"), dvfs_gpu_table);
-#if defined(CONFIG_ARCH_RK3188)
-//leolas rk3188T ddr
+#if defined(CONFIG_ARCH_RK3188) && !defined (CONFIG_RK3188T_DDR_OVERRIDE)
 	if (rk_pll_flag() == 0)
-		{
-		printk("*********************************************\n");
-		printk("rk_pll_flag() == 0 Using ddr table for RK3188\n");
-		printk("*********************************************\n");
 		dvfs_set_freq_volt_table(clk_get(NULL, "ddr"), dvfs_ddr_table);
-		}
 	else
-		{
-		printk("**********************************************\n");
-		printk("rk_pll_flag() == 1 Using ddr table for RK3188T\n");
-		printk("**********************************************\n");
+
 		dvfs_set_freq_volt_table(clk_get(NULL, "ddr"), dvfs_ddr_table_t);
-		}
 #else
 	dvfs_set_freq_volt_table(clk_get(NULL, "ddr"), dvfs_ddr_table);
 #endif

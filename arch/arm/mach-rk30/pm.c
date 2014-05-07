@@ -885,7 +885,7 @@ static void rk_pm_soc_pll_suspend(void)
 	cru_mode_con = cru_readl(CRU_MODE_CON);
 	
 		//cpll
-#if defined (CONFIG_RK3188_DDR_OVERRIDE)
+#if !defined(CONFIG_RK3188_DDR_OVERRIDE)
 		if(rk_pll_flag()==0)
 #endif
 		{	
@@ -918,7 +918,7 @@ static void rk_pm_soc_pll_suspend(void)
 		power_off_pll(APLL_ID);
 	
 		//gpll
-#if defined (CONFIG_RK3188_GPU_OVERRIDE)
+#if !defined(CONFIG_RK3188_GPU_OVERRIDE)
 		if(rk_pll_flag()==0)
 #endif
 		{
@@ -937,7 +937,7 @@ static void rk_pm_soc_pll_resume(void)
 {
 	
 	//gpll
-#if defined (CONFIG_RK3188_GPU_OVERRIDE)
+#if !defined(CONFIG_RK3188_GPU_OVERRIDE)
 		if(rk_pll_flag()==0)
 #endif
 	{
@@ -954,7 +954,7 @@ static void rk_pm_soc_pll_resume(void)
 	cru_writel((PLL_MODE_MSK(APLL_ID) << 16) | (PLL_MODE_MSK(APLL_ID) & cru_mode_con), CRU_MODE_CON);
 
 	//cpll
-#if defined (CONFIG_RK3188_DDR_OVERRIDE)
+#if !defined(CONFIG_RK3188_DDR_OVERRIDE)
 		if(rk_pll_flag()==0)
 #endif
 	{	

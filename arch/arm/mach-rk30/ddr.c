@@ -1534,7 +1534,7 @@ static __sramdata bool ddr_rk3188_dpll_is_good=true;
 #if defined(CONFIG_ARCH_RK3188)
 bool ddr_get_dpll_status(void) //CPLL or DPLL bad rerurn false;good return true;
 {
-#if defined (CONFIG_RK3188T_DDR_OVERRIDE)
+#if !defined(CONFIG_RK3188T_DDR_OVERRIDE)
     if (rk_pll_flag() & 0x3)
         return false;
     else
