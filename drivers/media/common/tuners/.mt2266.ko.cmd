@@ -1,1 +1,0 @@
-cmd_drivers/media/common/tuners/mt2266.ko := arm-linux-gnueabihf-ld -EL -r  -T /home/darrell/android/rockchip/kk/scripts/module-common.lds --build-id  -o drivers/media/common/tuners/mt2266.ko drivers/media/common/tuners/mt2266.o drivers/media/common/tuners/mt2266.mod.o

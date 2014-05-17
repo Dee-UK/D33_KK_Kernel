@@ -1,1 +1,0 @@
-cmd_drivers/video/rockchip/tvencoder/rk1000/built-in.o :=  arm-linux-gnueabihf-ld -EL    -r -o drivers/video/rockchip/tvencoder/rk1000/built-in.o drivers/video/rockchip/tvencoder/rk1000/rk1000_tv.o drivers/video/rockchip/tvencoder/rk1000/rk1000_tv_cvbs.o 

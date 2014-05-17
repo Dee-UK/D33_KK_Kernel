@@ -1,8 +1,0 @@
-kernel/sound/soc/snd-soc-core.ko
-kernel/sound/soc/codecs/snd-soc-hdmi-spdif.ko
-kernel/sound/soc/codecs/snd-soc-rk1000.ko
-kernel/sound/soc/rk29/snd-soc-rockchip.ko
-kernel/sound/soc/rk29/snd-soc-rockchip-i2s.ko
-kernel/sound/soc/rk29/snd-soc-rockchip-spdif.ko
-kernel/sound/soc/rk29/snd-soc-rk1000.ko
-kernel/sound/soc/rk29/snd-soc-hdmi-spdif.ko

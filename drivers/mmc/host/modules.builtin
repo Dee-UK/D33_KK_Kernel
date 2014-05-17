@@ -1,3 +1,0 @@
-kernel/drivers/mmc/host/rk29_sdmmc.ko
-kernel/drivers/mmc/host/rkemmc.ko
-kernel/drivers/mmc/host/rkemmc_ops.ko

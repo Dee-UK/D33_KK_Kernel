@@ -1,1 +1,0 @@
-cmd_drivers/video/rockchip/screen/lcd.h := cmp -s drivers/video/rockchip/screen/lcd_720p.c drivers/video/rockchip/screen/lcd.h || cp drivers/video/rockchip/screen/lcd_720p.c drivers/video/rockchip/screen/lcd.h

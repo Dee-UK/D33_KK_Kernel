@@ -1,1 +1,0 @@
-cmd_drivers/media/common/tuners/mt20xx.ko := arm-linux-gnueabihf-ld -EL -r  -T /home/darrell/android/rockchip/kk/scripts/module-common.lds --build-id  -o drivers/media/common/tuners/mt20xx.ko drivers/media/common/tuners/mt20xx.o drivers/media/common/tuners/mt20xx.mod.o

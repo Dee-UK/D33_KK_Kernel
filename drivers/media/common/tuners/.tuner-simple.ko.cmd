@@ -1,1 +1,0 @@
-cmd_drivers/media/common/tuners/tuner-simple.ko := arm-linux-gnueabihf-ld -EL -r  -T /home/darrell/android/rockchip/kk/scripts/module-common.lds --build-id  -o drivers/media/common/tuners/tuner-simple.ko drivers/media/common/tuners/tuner-simple.o drivers/media/common/tuners/tuner-simple.mod.o

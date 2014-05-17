@@ -1,6 +1,0 @@
-kernel/block/sio-iosched.ko
-kernel/block/vr-iosched.ko
-kernel/block/zen-iosched.ko
-kernel/block/deadline-iosched.ko
-kernel/block/cfq-iosched.ko
-kernel/block/row-iosched.ko
