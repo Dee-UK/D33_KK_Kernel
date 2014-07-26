@@ -10,7 +10,8 @@ obj-$(CONFIG_RTL8192CU) += rkcfg.o rtl8192cu/
 obj-$(CONFIG_RTL8723AU) += rkcfg.o rtl8723au/
 obj-$(CONFIG_RTL8192DU) += rkcfg.o rtl8192du/
 obj-$(CONFIG_RT5370) += rkcfg.o
-obj-$(CONFIG_MT7601) += rkcfg.o
+obj-$(CONFIG_MT7601)	+= rkcfg.o mt7601/DPA_MT7601U_ANDROID_JB_3.0.0.6_20130830_SOFTAP/
+
 .PHONY: clean
 
 clean:

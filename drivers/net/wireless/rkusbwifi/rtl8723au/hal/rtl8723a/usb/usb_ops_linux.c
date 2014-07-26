@@ -709,8 +709,11 @@ static int recvbuf2recvframe(_adapter *padapter, struct recv_buf *precvbuf)
 
 		pattrib = &precvframe->u.hdr.attrib;
 		
-		if(padapter->registrypriv.mp_mode == 0) && (pattrib->crc_err)){
-			DBG_8192C("%s()-%d: RX Warning! rx CRC ERROR !!\n", __FUNCTION__, __LINE__);	
+		if(pattrib->crc_err){
+			if (padapter->registrypriv.mp_mode == 1)
+				padapter->mppriv.rx_crcerrpktcount++;
+			else
+				DBG_8192C("%s()-%d: RX Warning! rx CRC ERROR !!\n", __FUNCTION__, __LINE__);	
 			rtw_free_recvframe(precvframe, pfree_recv_queue);
 			goto _exit_recvbuf2recvframe;
 		}			
@@ -1253,8 +1256,11 @@ static int recvbuf2recvframe(_adapter *padapter, _pkt *pskb)
 
 		pattrib = &precvframe->u.hdr.attrib;
 		
-		if ((padapter->registrypriv.mp_mode == 0) && (pattrib->crc_err)){
-			DBG_8192C("%s()-%d: RX Warning! rx CRC ERROR !!\n", __FUNCTION__, __LINE__);	
+		if(pattrib->crc_err){
+			if (padapter->registrypriv.mp_mode == 1)
+					padapter->mppriv.rx_crcerrpktcount++;
+			else
+				DBG_8192C("%s()-%d: RX Warning! rx CRC ERROR !!\n", __FUNCTION__, __LINE__);	
 			rtw_free_recvframe(precvframe, pfree_recv_queue);
 			goto _exit_recvbuf2recvframe;
 		}			

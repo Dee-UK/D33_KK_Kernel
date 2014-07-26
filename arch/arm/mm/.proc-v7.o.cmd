@@ -1,4 +1,4 @@
-cmd_arch/arm/mm/proc-v7.o := arm-linux-gnueabihf-gcc -Wp,-MD,arch/arm/mm/.proc-v7.o.d  -nostdinc -isystem /usr/lib/gcc-cross/arm-linux-gnueabihf/4.8/include -I/home/darrell/android/rockchip/kk/arch/arm/include -Iarch/arm/include/generated -Iinclude  -include include/generated/autoconf.h -D__KERNEL__ -mlittle-endian -Iarch/arm/mach-rk3188/include -Iarch/arm/plat-rk/include -D__ASSEMBLY__ -mabi=aapcs-linux -mno-thumb-interwork -funwind-tables  -D__LINUX_ARM_ARCH__=7 -march=armv7-a  -include asm/unified.h -msoft-float     -Wa,-march=armv7-a   -c -o arch/arm/mm/proc-v7.o arch/arm/mm/proc-v7.S
+cmd_arch/arm/mm/proc-v7.o := arm-linux-gnueabihf-gcc -Wp,-MD,arch/arm/mm/.proc-v7.o.d  -nostdinc -isystem /usr/lib/gcc-cross/arm-linux-gnueabihf/4.8/include -I/home/darrell/android/rockchip/rk3188/arch/arm/include -Iarch/arm/include/generated -Iinclude  -include include/generated/autoconf.h -D__KERNEL__ -mlittle-endian -Iarch/arm/mach-rk3188/include -Iarch/arm/plat-rk/include -D__ASSEMBLY__ -mabi=aapcs-linux -mno-thumb-interwork -funwind-tables  -D__LINUX_ARM_ARCH__=7 -march=armv7-a  -include asm/unified.h -msoft-float     -Wa,-march=armv7-a   -c -o arch/arm/mm/proc-v7.o arch/arm/mm/proc-v7.S
 
 source_arch/arm/mm/proc-v7.o := arch/arm/mm/proc-v7.S
 
@@ -20,7 +20,7 @@ deps_arch/arm/mm/proc-v7.o := \
     $(wildcard include/config/arm/thumbee.h) \
     $(wildcard include/config/cpu/endian/be8.h) \
     $(wildcard include/config/swp/emulate.h) \
-  /home/darrell/android/rockchip/kk/arch/arm/include/asm/unified.h \
+  /home/darrell/android/rockchip/rk3188/arch/arm/include/asm/unified.h \
     $(wildcard include/config/arm/asm/unified.h) \
     $(wildcard include/config/thumb2/kernel.h) \
   include/linux/init.h \
@@ -33,26 +33,26 @@ deps_arch/arm/mm/proc-v7.o := \
     $(wildcard include/config/enable/must/check.h) \
     $(wildcard include/config/enable/warn/deprecated.h) \
   include/linux/linkage.h \
-  /home/darrell/android/rockchip/kk/arch/arm/include/asm/linkage.h \
-  /home/darrell/android/rockchip/kk/arch/arm/include/asm/assembler.h \
+  /home/darrell/android/rockchip/rk3188/arch/arm/include/asm/linkage.h \
+  /home/darrell/android/rockchip/rk3188/arch/arm/include/asm/assembler.h \
     $(wildcard include/config/cpu/feroceon.h) \
     $(wildcard include/config/trace/irqflags.h) \
     $(wildcard include/config/rk/check/uaccess.h) \
-  /home/darrell/android/rockchip/kk/arch/arm/include/asm/ptrace.h \
+  /home/darrell/android/rockchip/rk3188/arch/arm/include/asm/ptrace.h \
     $(wildcard include/config/arm/thumb.h) \
-  /home/darrell/android/rockchip/kk/arch/arm/include/asm/hwcap.h \
-  /home/darrell/android/rockchip/kk/arch/arm/include/asm/domain.h \
+  /home/darrell/android/rockchip/rk3188/arch/arm/include/asm/hwcap.h \
+  /home/darrell/android/rockchip/rk3188/arch/arm/include/asm/domain.h \
     $(wildcard include/config/io/36.h) \
-  /home/darrell/android/rockchip/kk/arch/arm/include/asm/asm-offsets.h \
+  /home/darrell/android/rockchip/rk3188/arch/arm/include/asm/asm-offsets.h \
   include/generated/asm-offsets.h \
-  /home/darrell/android/rockchip/kk/arch/arm/include/asm/pgtable-hwdef.h \
-  /home/darrell/android/rockchip/kk/arch/arm/include/asm/pgtable.h \
+  /home/darrell/android/rockchip/rk3188/arch/arm/include/asm/pgtable-hwdef.h \
+  /home/darrell/android/rockchip/rk3188/arch/arm/include/asm/pgtable.h \
     $(wildcard include/config/arm/dma/mem/bufferable.h) \
     $(wildcard include/config/highpte.h) \
   include/linux/const.h \
   include/asm-generic/4level-fixup.h \
-  /home/darrell/android/rockchip/kk/arch/arm/include/asm/proc-fns.h \
-  /home/darrell/android/rockchip/kk/arch/arm/include/asm/glue-proc.h \
+  /home/darrell/android/rockchip/rk3188/arch/arm/include/asm/proc-fns.h \
+  /home/darrell/android/rockchip/rk3188/arch/arm/include/asm/glue-proc.h \
     $(wildcard include/config/cpu/arm610.h) \
     $(wildcard include/config/cpu/arm7tdmi.h) \
     $(wildcard include/config/cpu/arm710.h) \
@@ -78,8 +78,8 @@ deps_arch/arm/mm/proc-v7.o := \
     $(wildcard include/config/cpu/v6.h) \
     $(wildcard include/config/cpu/v6k.h) \
     $(wildcard include/config/cpu/v7.h) \
-  /home/darrell/android/rockchip/kk/arch/arm/include/asm/glue.h \
-  /home/darrell/android/rockchip/kk/arch/arm/include/asm/page.h \
+  /home/darrell/android/rockchip/rk3188/arch/arm/include/asm/glue.h \
+  /home/darrell/android/rockchip/rk3188/arch/arm/include/asm/page.h \
     $(wildcard include/config/cpu/copy/v3.h) \
     $(wildcard include/config/cpu/copy/v4wt.h) \
     $(wildcard include/config/cpu/copy/v4wb.h) \
@@ -88,7 +88,7 @@ deps_arch/arm/mm/proc-v7.o := \
     $(wildcard include/config/cpu/copy/v6.h) \
     $(wildcard include/config/have/arch/pfn/valid.h) \
   include/asm-generic/getorder.h \
-  /home/darrell/android/rockchip/kk/arch/arm/include/asm/memory.h \
+  /home/darrell/android/rockchip/rk3188/arch/arm/include/asm/memory.h \
     $(wildcard include/config/page/offset.h) \
     $(wildcard include/config/highmem.h) \
     $(wildcard include/config/dram/size.h) \
@@ -102,9 +102,9 @@ deps_arch/arm/mm/proc-v7.o := \
     $(wildcard include/config/arch/dma/addr/t/64bit.h) \
     $(wildcard include/config/phys/addr/t/64bit.h) \
     $(wildcard include/config/64bit.h) \
-  /home/darrell/android/rockchip/kk/arch/arm/include/asm/types.h \
+  /home/darrell/android/rockchip/rk3188/arch/arm/include/asm/types.h \
   include/asm-generic/int-ll64.h \
-  /home/darrell/android/rockchip/kk/arch/arm/include/asm/bitsperlong.h \
+  /home/darrell/android/rockchip/rk3188/arch/arm/include/asm/bitsperlong.h \
   include/asm-generic/bitsperlong.h \
   arch/arm/mach-rk3188/include/mach/memory.h \
   arch/arm/plat-rk/include/plat/memory.h \
@@ -112,7 +112,7 @@ deps_arch/arm/mm/proc-v7.o := \
   include/linux/version.h \
   arch/arm/mach-rk3188/include/mach/io.h \
   arch/arm/plat-rk/include/plat/io.h \
-  /home/darrell/android/rockchip/kk/arch/arm/include/asm/sizes.h \
+  /home/darrell/android/rockchip/rk3188/arch/arm/include/asm/sizes.h \
   include/asm-generic/sizes.h \
   include/asm-generic/memory_model.h \
     $(wildcard include/config/flatmem.h) \
@@ -123,8 +123,8 @@ deps_arch/arm/mm/proc-v7.o := \
   arch/arm/include/generated/../../mach-rk30/include/mach/vmalloc.h \
   arch/arm/mm/proc-macros.S \
     $(wildcard include/config/cpu/dcache/writethrough.h) \
-  /home/darrell/android/rockchip/kk/arch/arm/include/asm/thread_info.h \
-  /home/darrell/android/rockchip/kk/arch/arm/include/asm/fpstate.h \
+  /home/darrell/android/rockchip/rk3188/arch/arm/include/asm/thread_info.h \
+  /home/darrell/android/rockchip/rk3188/arch/arm/include/asm/fpstate.h \
     $(wildcard include/config/vfpv3.h) \
     $(wildcard include/config/iwmmxt.h) \
 

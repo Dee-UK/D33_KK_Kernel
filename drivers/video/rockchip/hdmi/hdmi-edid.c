@@ -252,7 +252,7 @@ static int hdmi_edid_parse_3dinfo(unsigned char *buf, struct list_head *head)
 static int hdmi_edid_parse_extensions_cea(unsigned char *buf, struct hdmi_edid *pedid)
 {
 	unsigned int ddc_offset, native_dtd_num, cur_offset = 4, buf_offset;
-//	unsigned int underscan_support, baseaudio_support;
+	unsigned int underscan_support, baseaudio_support;
 	unsigned int tag, IEEEOUI = 0, count;
 	
 	if(buf == NULL)
@@ -266,12 +266,14 @@ static int hdmi_edid_parse_extensions_cea(unsigned char *buf, struct hdmi_edid *
 	}
 	
 	ddc_offset = buf[2];
-//	underscan_support = (buf[3] >> 7) & 0x01;
-//	baseaudio_support = (buf[3] >> 6) & 0x01;
+	underscan_support = (buf[3] >> 7) & 0x01;
+	baseaudio_support = (buf[3] >> 6) & 0x01;
 	pedid->ycbcr444 = (buf[3] >> 5) & 0x01;
 	pedid->ycbcr422 = (buf[3] >> 4) & 0x01;
 	native_dtd_num = buf[3] & 0x0F;
 //	hdmi_edid_debug("[EDID-CEA] ddc_offset %d underscan_support %d baseaudio_support %d yuv_support %d native_dtd_num %d\n", ddc_offset, underscan_support, baseaudio_support, yuv_support, native_dtd_num);
+	pedid->base_audio_support = baseaudio_support;	//SMIC Audio bug fix
+
 	// Parse data block
 	while(cur_offset < ddc_offset)
 	{

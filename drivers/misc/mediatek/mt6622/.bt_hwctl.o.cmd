@@ -1,0 +1,1 @@
+cmd_drivers/misc/mediatek/mt6622/bt_hwctl.o := arm-linux-gnueabihf-ld -EL    -r -o drivers/misc/mediatek/mt6622/bt_hwctl.o drivers/misc/mediatek/mt6622/bt_hwctl_dev.o drivers/misc/mediatek/mt6622/bt_eirq_handler.o drivers/misc/mediatek/mt6622/bt_plat_smdk.o 

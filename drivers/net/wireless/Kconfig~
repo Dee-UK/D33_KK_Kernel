@@ -150,8 +150,8 @@ choice
 		bool "AP6210"
 		depends on RKWIFI && WLAN_80211
 
-	config AP6210-ALT
-		bool "AP6210-Alternative"
+	config AP6210_ALT
+		bool "AP6210 alternetive GPIO (J22)"
 		depends on RKWIFI && WLAN_80211
 
 	config AP6330

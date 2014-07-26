@@ -1,0 +1,1 @@
+cmd_drivers/mtk_wcn_bt/bt_hwctl.o := arm-linux-gnueabihf-ld -EL    -r -o drivers/mtk_wcn_bt/bt_hwctl.o drivers/mtk_wcn_bt/bt_hwctl_dev.o drivers/mtk_wcn_bt/bt_eirq_handler.o drivers/mtk_wcn_bt/bt_plat_smdk.o 

@@ -1,0 +1,1 @@
+cmd_drivers/misc/mediatek/combo_mt66xx/wmt/mtk_wmt_wifi.o := arm-linux-gnueabihf-ld -EL    -r -o drivers/misc/mediatek/combo_mt66xx/wmt/mtk_wmt_wifi.o drivers/misc/mediatek/combo_mt66xx/wmt/linux/wmt_chrdev_wifi.o 

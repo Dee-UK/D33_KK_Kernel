@@ -1,0 +1,1 @@
+cmd_drivers/net/wireless/rkusbwifi/mt7601/DPA_MT7601U_ANDROID_JB_3.0.0.6_20130830_SOFTAP/built-in.o :=  arm-linux-gnueabihf-ld -EL    -r -o drivers/net/wireless/rkusbwifi/mt7601/DPA_MT7601U_ANDROID_JB_3.0.0.6_20130830_SOFTAP/built-in.o drivers/net/wireless/rkusbwifi/mt7601/DPA_MT7601U_ANDROID_JB_3.0.0.6_20130830_SOFTAP/mt7601sta.o 

@@ -1,1 +1,1 @@
-cmd_sound/soc/rk29/built-in.o :=  arm-linux-gnueabihf-ld -EL    -r -o sound/soc/rk29/built-in.o sound/soc/rk29/snd-soc-rockchip.o sound/soc/rk29/snd-soc-rockchip-i2s.o sound/soc/rk29/snd-soc-hdmi-i2s.o 
+cmd_sound/soc/rk29/built-in.o :=  arm-linux-gnueabihf-ld -EL    -r -o sound/soc/rk29/built-in.o sound/soc/rk29/snd-soc-rockchip.o sound/soc/rk29/snd-soc-rockchip-i2s.o sound/soc/rk29/snd-soc-rockchip-spdif.o sound/soc/rk29/snd-soc-rk1000.o sound/soc/rk29/snd-soc-hdmi-spdif.o 

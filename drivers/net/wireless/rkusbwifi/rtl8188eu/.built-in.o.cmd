@@ -1,0 +1,1 @@
+cmd_drivers/net/wireless/rkusbwifi/rtl8188eu/built-in.o :=  arm-linux-gnueabihf-ld -EL    --strip-debug -r -o drivers/net/wireless/rkusbwifi/rtl8188eu/built-in.o drivers/net/wireless/rkusbwifi/rtl8188eu/8188eu.o 

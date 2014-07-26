@@ -216,7 +216,7 @@ char* ifname = "wlan%d";
 module_param(ifname, charp, 0644);
 MODULE_PARM_DESC(ifname, "The default name to allocate for first interface");
 
-char* if2name = "p2p0";
+char* if2name = "wlan%d";
 module_param(if2name, charp, 0644);
 MODULE_PARM_DESC(if2name, "The default name to allocate for second interface");
 
@@ -2505,6 +2505,13 @@ static int netdev_close(struct net_device *pnetdev)
 #endif	// CONFIG_BR_EXT
 
 #ifdef CONFIG_P2P
+#ifdef CONFIG_IOCTL_CFG80211
+	if( padapter->wdinfo.driver_interface == DRIVER_CFG80211 )
+	{
+		if(wdev_to_priv(padapter->rtw_wdev)->p2p_enabled == _TRUE)
+			wdev_to_priv(padapter->rtw_wdev)->p2p_enabled = _FALSE;
+	}
+#endif //CONFIG_IOCTL_CFG80211
 	rtw_p2p_enable(padapter, P2P_ROLE_DISABLE);
 #endif //CONFIG_P2P
 
@@ -2877,6 +2884,7 @@ int rtw_suspend_common(_adapter *padapter)
 	
 	int ret = 0;
 	_func_enter_;
+	LeaveAllPowerSaveMode(padapter);
 	
 	rtw_suspend_free_assoc_resource(padapter);
 
@@ -2954,19 +2962,18 @@ int rtw_resume_common(_adapter *padapter)
 
 	#ifdef CONFIG_CONCURRENT_MODE
 	if(rtw_buddy_adapter_up(padapter))
-	{
-		padapter = padapter->pbuddy_adapter;
-		mlmepriv = &padapter->mlmepriv;	
+	{	
+		mlmepriv = &padapter->pbuddy_adapter->mlmepriv;	
 		if (check_fwstate(mlmepriv, WIFI_STATION_STATE)) {
 			DBG_871X(FUNC_ADPT_FMT" fwstate:0x%08x - WIFI_STATION_STATE\n", FUNC_ADPT_ARG(padapter), get_fwstate(mlmepriv));
 
 			#ifdef CONFIG_LAYER2_ROAMING_RESUME
-			rtw_roaming(padapter, NULL);
+			rtw_roaming(padapter->pbuddy_adapter, NULL);
 			#endif //CONFIG_LAYER2_ROAMING_RESUME
 		
 		} else if (check_fwstate(mlmepriv, WIFI_AP_STATE)) {
 			DBG_871X(FUNC_ADPT_FMT" fwstate:0x%08x - WIFI_AP_STATE\n", FUNC_ADPT_ARG(padapter), get_fwstate(mlmepriv));
-			rtw_ap_restore_network(padapter);
+			rtw_ap_restore_network(padapter->pbuddy_adapter);
 		} else if (check_fwstate(mlmepriv, WIFI_ADHOC_STATE)) {
 			DBG_871X(FUNC_ADPT_FMT" fwstate:0x%08x - WIFI_ADHOC_STATE\n", FUNC_ADPT_ARG(padapter), get_fwstate(mlmepriv));
 		} else {

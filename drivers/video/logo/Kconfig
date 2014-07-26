@@ -27,6 +27,14 @@ config LOGO_LINUX_CLUT224
 	bool "Standard 224-color TNT logo at 1080p"
 	default y
 
+config LOGO_FREAKBOX_720
+	bool "FreakBox logo at 720p"
+	default y
+
+config LOGO_FREAKBOX_1080
+	bool "FreakBox logo at 1080p"
+	default y
+
 config LOGO_PIPO_CLUT224
 	bool "Standard 224-color TNT logo at 720p"
 	default n

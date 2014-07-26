@@ -71,14 +71,19 @@ int rk31sdk_get_sdmmc0_pin_io_voltage(void)
 *
 */          
 #if defined(CONFIG_RTL8192CU) || defined(CONFIG_RTL8188EU) || defined(CONFIG_RTL8723AU) \
-	|| defined(CONFIG_RTL8192DU)
+	|| defined(CONFIG_RTL8192DU) 
     #define RK30SDK_WIFI_GPIO_POWER_N               RK30_PIN3_PD0            
     #define RK30SDK_WIFI_GPIO_POWER_ENABLE_VALUE    GPIO_LOW//GPIO_HIGH        
     
 #elif defined(CONFIG_BCM4329) || defined(CONFIG_BCM4319) || defined(CONFIG_RKWIFI) \
-	|| defined(CONFIG_RTL8189ES) || defined(CONFIG_RTL8723BS)
+	|| defined(CONFIG_RTL8189ES) || defined(CONFIG_RTL8723BS) || defined(CONFIG_RTL8723AS)
 
-    #define RK30SDK_WIFI_GPIO_POWER_N               RK30_PIN3_PD0                 
+     #if defined(CONFIG_AP6210_ALT)
+          #define RK30SDK_WIFI_GPIO_POWER_N               RK30_PIN3_PB4  
+      #else
+          #define RK30SDK_WIFI_GPIO_POWER_N               RK30_PIN3_PD0
+      #endif      
+                
     #define RK30SDK_WIFI_GPIO_POWER_ENABLE_VALUE    GPIO_HIGH                   
 
     #define RK30SDK_WIFI_GPIO_RESET_N               RK30_PIN2_PA7
@@ -87,26 +92,42 @@ int rk31sdk_get_sdmmc0_pin_io_voltage(void)
 	#define RK30SDK_WIFI_GPIO_WIFI_INT_B                RK30_PIN3_PD2
     #define RK30SDK_WIFI_GPIO_WIFI_INT_B_ENABLE_VALUE   GPIO_HIGH
 
+#elif defined(CONFIG_ESP8089)
+	#define RK30SDK_WIFI_GPIO_POWER_N               RK30_PIN3_PD0
+	#define RK30SDK_WIFI_GPIO_POWER_ENABLE_VALUE    GPIO_HIGH
+
+#elif defined(CONFIG_MT7601)
+    #define RK30SDK_WIFI_GPIO_POWER_N               RK30_PIN3_PA0            
+    #define RK30SDK_WIFI_GPIO_POWER_ENABLE_VALUE    GPIO_HIGH
+ 	
 #elif defined(CONFIG_MT5931_MT6622) || defined(CONFIG_MT5931) || defined(CONFIG_MTK_MT5931)
 
 	#ifdef  CONFIG_MACH_RK3168_LR097 
-    	#define RK30SDK_WIFI_GPIO_POWER_N               RK30_PIN3_PD0 
-    	#define RK30SDK_WIFI_GPIO_POWER_ENABLE_VALUE    GPIO_HIGH
-
-    	//#define RK30SDK_WIFI_GPIO_RESET_N 	            RK30_PIN3_PD1
-    	//#define RK30SDK_WIFI_GPIO_RESET_ENABLE_VALUE    GPIO_HIGH
+	    	#define RK30SDK_WIFI_GPIO_POWER_N               RK30_PIN3_PD0 
+	    	#define RK30SDK_WIFI_GPIO_POWER_ENABLE_VALUE    GPIO_HIGH
+		#define RK30SDK_WIFI_GPIO_POWER_PIN_NAME        "wifi_power"
+		#define RK30SDK_WIFI_GPIO_POWER_IOMUX_FGPIO     GPIO3_D0
+	    	//#define RK30SDK_WIFI_GPIO_RESET_N 	            RK30_PIN3_PD1
+	    	//#define RK30SDK_WIFI_GPIO_RESET_ENABLE_VALUE    GPIO_HIGH
 
 	#else
-	#if DS1006H_V1_2_SUPPORT
-      #define RK30SDK_WIFI_GPIO_POWER_N               RK30_PIN3_PD0
-    	#define RK30SDK_WIFI_GPIO_POWER_ENABLE_VALUE    GPIO_HIGH
-	#else
-    	#define RK30SDK_WIFI_GPIO_POWER_N               RK30_PIN0_PA5
-    	#define RK30SDK_WIFI_GPIO_POWER_ENABLE_VALUE    GPIO_HIGH
-
-    	#define RK30SDK_WIFI_GPIO_RESET_N               RK30_PIN3_PD1
-    	#define RK30SDK_WIFI_GPIO_RESET_ENABLE_VALUE    GPIO_HIGH	
-    	#endif
+		#if DS1006H_V1_2_SUPPORT
+			#define RK30SDK_WIFI_GPIO_POWER_N               RK30_PIN3_PD0
+	    		#define RK30SDK_WIFI_GPIO_POWER_ENABLE_VALUE    GPIO_HIGH
+			#define RK30SDK_WIFI_GPIO_POWER_PIN_NAME        "wifi_power"
+			#define RK30SDK_WIFI_GPIO_POWER_IOMUX_FGPIO     GPIO3_D0
+		#else
+	    		#define RK30SDK_WIFI_GPIO_POWER_N               RK30_PIN0_PA5
+	    		#define RK30SDK_WIFI_GPIO_POWER_ENABLE_VALUE    GPIO_HIGH
+			#define RK30SDK_WIFI_GPIO_POWER_PIN_NAME        "wifi_power"
+			#define RK30SDK_WIFI_GPIO_POWER_IOMUX_FGPIO     GPIO0_A5
+	 
+			#define RK30SDK_WIFI_GPIO_RESET_N               RK30_PIN3_PD1
+			#define RK30SDK_WIFI_GPIO_RESET_ENABLE_VALUE    GPIO_HIGH
+			#define RK30SDK_WIFI_GPIO_RESET_PIN_NAME        "wifi_reset"
+			#define RK30SDK_WIFI_GPIO_RESET_IOMUX_FGPIO     GPIO3_D1
+	
+	    	#endif
 	#endif
 
 #elif defined(CONFIG_MT6620)
@@ -157,6 +178,8 @@ int rk31sdk_get_sdio_wifi_voltage(void)
     
 #elif defined(CONFIG_MT5931_MT6622)||defined(CONFIG_MT5931) || defined(CONFIG_MTK_MT5931)
     voltage = 2800 ; //power 1800V
+#elif defined(CONFIG_ESP8089)
+	voltage = 3000 ; //power 3000V
 #elif defined(CONFIG_MT6620) 
     voltage = 2800 ; //power 2800V
 #elif defined(CONFIG_RDA5990)||defined(CONFIG_RTL8723AS) || defined(CONFIG_RTL8189ES)  \

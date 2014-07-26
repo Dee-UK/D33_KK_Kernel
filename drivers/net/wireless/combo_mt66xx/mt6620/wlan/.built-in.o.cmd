@@ -1,0 +1,1 @@
+cmd_drivers/net/wireless/combo_mt66xx/mt6620/wlan/built-in.o :=  arm-linux-gnueabihf-ld -EL    -r -o drivers/net/wireless/combo_mt66xx/mt6620/wlan/built-in.o drivers/net/wireless/combo_mt66xx/mt6620/wlan/wlan_mt6620.o 

@@ -1,1 +1,1 @@
-cmd_drivers/media/common/tuners/max2165.ko := arm-linux-gnueabihf-ld -EL -r  -T /home/darrell/android/rockchip/kk/scripts/module-common.lds --build-id  -o drivers/media/common/tuners/max2165.ko drivers/media/common/tuners/max2165.o drivers/media/common/tuners/max2165.mod.o
+cmd_drivers/media/common/tuners/max2165.ko := arm-linux-gnueabihf-ld -EL -r  -T /home/darrell/android/rockchip/rk3188/scripts/module-common.lds --build-id  -o drivers/media/common/tuners/max2165.ko drivers/media/common/tuners/max2165.o drivers/media/common/tuners/max2165.mod.o

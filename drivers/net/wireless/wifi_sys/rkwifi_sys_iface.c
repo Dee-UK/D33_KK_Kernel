@@ -117,7 +117,17 @@ static ssize_t wifi_chip_read(struct class *cls, char *_buf)
 #endif
 #endif
 
-#ifdef CONFIG_AP6210
+#ifdef CONFIG_AP6210 
+#ifdef CONFIG_BCM_OOB_ENABLED
+    count = sprintf(_buf, "%s", "OOB_RK901");
+    printk("Current WiFi chip is AP6210(OOB)\n");
+#else
+    count = sprintf(_buf, "%s", "RK901");
+    printk("Current WiFi chip is AP6210.\n");
+#endif
+#endif
+
+#ifdef CONFIG_AP6210_ALT 
 #ifdef CONFIG_BCM_OOB_ENABLED
     count = sprintf(_buf, "%s", "OOB_RK901");
     printk("Current WiFi chip is AP6210(OOB)\n");

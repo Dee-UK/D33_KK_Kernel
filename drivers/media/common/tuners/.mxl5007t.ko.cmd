@@ -1,1 +1,1 @@
-cmd_drivers/media/common/tuners/mxl5007t.ko := arm-linux-gnueabihf-ld -EL -r  -T /home/darrell/android/rockchip/kk/scripts/module-common.lds --build-id  -o drivers/media/common/tuners/mxl5007t.ko drivers/media/common/tuners/mxl5007t.o drivers/media/common/tuners/mxl5007t.mod.o
+cmd_drivers/media/common/tuners/mxl5007t.ko := arm-linux-gnueabihf-ld -EL -r  -T /home/darrell/android/rockchip/rk3188/scripts/module-common.lds --build-id  -o drivers/media/common/tuners/mxl5007t.ko drivers/media/common/tuners/mxl5007t.o drivers/media/common/tuners/mxl5007t.mod.o

@@ -1,6 +1,8 @@
 # Makefile for the Linux logos
 
 obj-$(CONFIG_LOGO)			+= logo.o
+obj-$(CONFIG_LOGO_FREAKBOX_720)		+= logo_freakbox_720_clut224.o
+obj-$(CONFIG_LOGO_FREAKBOX_1080)	+= logo_freakbox_1080_clut224.o
 obj-$(CONFIG_LOGO_LINUX_MONO)		+= logo_linux_mono.o
 obj-$(CONFIG_LOGO_LINUX_VGA16)		+= logo_linux_vga16.o
 obj-$(CONFIG_LOGO_LINUX_CLUT224)	+= logo_linux_clut224.o

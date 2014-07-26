@@ -1,0 +1,1 @@
+cmd_drivers/misc/mediatek/combo_mt66xx/wmt/mtk_stp_uart.o := arm-linux-gnueabihf-ld -EL    -r -o drivers/misc/mediatek/combo_mt66xx/wmt/mtk_stp_uart.o drivers/misc/mediatek/combo_mt66xx/wmt/linux/stp_uart.o 

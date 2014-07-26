@@ -1,0 +1,1 @@
+cmd_drivers/net/wireless/mt5931_kk/drv_wlan/mtk_wmt_wifi.o := arm-linux-gnueabihf-ld -EL    -r -o drivers/net/wireless/mt5931_kk/drv_wlan/mtk_wmt_wifi.o drivers/net/wireless/mt5931_kk/drv_wlan/wmt_chrdev_wifi.o 

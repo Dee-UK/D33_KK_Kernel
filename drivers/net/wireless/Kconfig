@@ -78,12 +78,13 @@ choice
           bool "MTK MT6620 WiFi SDIO"
           ---help---
             A library for MTK_wcn_combo SDIO WLAN devices.
+
 	config RDA5990
 	  depends on WLAN_80211 && MMC
 	  select WIRELESS_EXT
 	  select WEXT_PRIV
 	  select IEEE80211
-	  bool "rda 5990p"
+	  bool "RDA 5990"
 	  ---help---
 	    rda5990P fm bt wifi
 	    
@@ -111,7 +112,7 @@ choice
         select MAC80211
         ---help---
 
-source "drivers/net/wireless/mt5931/Kconfig"
+source "drivers/net/wireless/mt5931_kk/Kconfig"
 source "drivers/net/wireless/rkusbwifi/rtl8192cu/Kconfig"
 source "drivers/net/wireless/rkusbwifi/rtl8192du/Kconfig"
 source "drivers/net/wireless/rkusbwifi/rtl8188eu/Kconfig"
@@ -148,6 +149,10 @@ choice
 
 	config AP6210
 		bool "AP6210"
+		depends on RKWIFI && WLAN_80211
+
+	config AP6210_ALT
+		bool "AP6210 alternetive GPIO (J22)"
 		depends on RKWIFI && WLAN_80211
 
 	config AP6330

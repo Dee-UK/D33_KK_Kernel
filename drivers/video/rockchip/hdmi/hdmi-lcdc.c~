@@ -15,7 +15,7 @@ static const struct hdmi_video_timing hdmi_mode [] = {
 //	{ { "1920x1080i@50Hz",	50,			1920,	1080,	74250000,	148,	528,	15,		2,		44,		5,		FB_SYNC_HOR_HIGH_ACT | FB_SYNC_VERT_HIGH_ACT,			1,		0	},	20,		1,		OUT_CCIR656_M1},
 //	{ {	"1920x1080i@60Hz",	60,			1920,	1080,	74250000,	148,	88,		15,		2,		44,		5,		FB_SYNC_HOR_HIGH_ACT | FB_SYNC_VERT_HIGH_ACT,			1,		0	},	5,  	1,		OUT_CCIR656_M1	},
 //#endif
-//	{ {	"1920x1080p@24Hz",	24,			1920,	1080,	74250000,	148,	638,	36,		4,		44,		5,		FB_SYNC_HOR_HIGH_ACT | FB_SYNC_VERT_HIGH_ACT,			0,		0	},	32,		1,		OUT_P888	},
+	{ {	"1920x1080p@24Hz",	24,			1920,	1080,	74250000,	148,	638,	36,		4,		44,		5,		FB_SYNC_HOR_HIGH_ACT | FB_SYNC_VERT_HIGH_ACT,			0,		0	},	32,		1,		OUT_P888	},
 //	{ {	"1920x1080p@25Hz",	25,			1920,	1080,	74250000,	148,	528,	36,		4,		44,		5,		FB_SYNC_HOR_HIGH_ACT | FB_SYNC_VERT_HIGH_ACT,			0,		0	},	33,		1,		OUT_P888	},
 ///	{ {	"1920x1080p@30Hz",	30,			1920,	1080,	74250000,	148,	88,		36,		4,		44,		5,		FB_SYNC_HOR_HIGH_ACT | FB_SYNC_VERT_HIGH_ACT,			0,		0	},	34,		1,		OUT_P888	},
 	{ {	"1920x1080p@50Hz",	50,			1920,	1080,	148500000,	148,	528,	36,		4,		44,		5,		FB_SYNC_HOR_HIGH_ACT | FB_SYNC_VERT_HIGH_ACT,			0,		0	},	31,  	1,		OUT_P888	},
@@ -443,7 +443,8 @@ int hdmi_ouputmode_select(struct hdmi *hdmi, int edid_ok)
 	
 	if(edid_ok != HDMI_ERROR_SUCESS) {
 		dev_err(hdmi->dev, "warning: EDID error, assume sink as DVI !!!!");
-		hdmi->edid.sink_hdmi = 0;
+		hdmi->edid.sink_hdmi = 1;	//SMIC audio fix (0 changed to 1)
+  		hdmi->edid.base_audio_support = 1;	//SMIC audio fix (new)
 	}
 
 	if(edid_ok != HDMI_ERROR_SUCESS) {

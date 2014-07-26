@@ -69,29 +69,18 @@ static void rtw_dev_remove(struct usb_interface *pusb_intf);
 static void rtw_dev_shutdown(struct device *dev)
 {
 	struct usb_interface *usb_intf = container_of(dev, struct usb_interface, dev);
-	struct dvobj_priv *dvobj = NULL;
-	_adapter *adapter = NULL;
+	struct dvobj_priv *dvobj = usb_get_intfdata(usb_intf);
+	_adapter *adapter = dvobj->if1;
 	int i;
 
 	DBG_871X("%s\n", __func__);
 
-	if(usb_intf)
-	{
-		dvobj = usb_get_intfdata(usb_intf);
-		if (dvobj)
-		{
-			for (i = 0; i<dvobj->iface_nums; i++)
-			{
-				adapter = dvobj->padapters[i];
-				if (adapter)
-				{
-					adapter->bSurpriseRemoved = _TRUE;
-				}
-			}
-
-			ATOMIC_SET(&dvobj->continual_io_error, MAX_CONTINUAL_IO_ERR+1);
-		}
+	for (i = 0; i<dvobj->iface_nums; i++) {
+		adapter = dvobj->padapters[i];
+		adapter->bSurpriseRemoved = _TRUE;
 	}
+
+	ATOMIC_SET(&dvobj->continual_io_error, MAX_CONTINUAL_IO_ERR+1);
 }
 
 #if (LINUX_VERSION_CODE<=KERNEL_VERSION(2,6,23))
@@ -1017,6 +1006,10 @@ static void rtw_suspend_wow(_adapter *padapter)
 		pwrpriv->wowlan_mode = _FALSE;
 	
 	rtw_cancel_all_timer(padapter);		
+	LeaveAllPowerSaveMode(padapter);
+
+	rtw_stop_cmd_thread(padapter);
+
 	
 	//padapter->net_closed = _TRUE;
 	//s1.
@@ -1088,16 +1081,6 @@ static int rtw_suspend(struct usb_interface *pusb_intf, pm_message_t message)
 
 	DBG_871X("==> %s (%s:%d)\n",__FUNCTION__, current->comm, current->pid);
 
-
-#ifdef CONFIG_IOL_READ_EFUSE_MAP
-	if(!padapter->bup){
-		u8 bMacPwrCtrlOn = _FALSE;
-		rtw_hal_get_hwreg(padapter, HW_VAR_APFM_ON_MAC, &bMacPwrCtrlOn);
-		if(bMacPwrCtrlOn)
-			rtw_hal_power_off(padapter);
-	}
-#endif
-
 	if((!padapter->bup) || (padapter->bDriverStopped)||(padapter->bSurpriseRemoved))
 	{
 		DBG_871X("padapter->bup=%d bDriverStopped=%d bSurpriseRemoved = %d\n",
@@ -1121,10 +1104,6 @@ static int rtw_suspend(struct usb_interface *pusb_intf, pm_message_t message)
 	}
 
 	pwrpriv->bInSuspend = _TRUE;		
-
-	LeaveAllPowerSaveMode(padapter);
-
-	rtw_stop_cmd_thread(padapter);
 
 	_enter_pwrlock(&pwrpriv->lock);
 #ifdef CONFIG_WOWLAN
@@ -2144,31 +2123,19 @@ static void rtw_drv_halt(void)
 extern int wifi_activate_usb(void);
 extern int wifi_deactivate_usb(void);
 
-#ifdef CONFIG_RK_CHECK_UACCESS
-static int __init rockchip_wifi_init_module(void)
-#else
 int rockchip_wifi_init_module(void)
-#endif
 {
-    printk("\n");
     printk("=======================================================\n");
     printk("==== Launching Wi-Fi driver! (Powered by Rockchip) ====\n");
     printk("=======================================================\n");
     printk("Realtek 8723AU USB WiFi driver (Powered by Rockchip,Ver %s) init.\n", RTL8192_DRV_VERSION);
-    wifi_deactivate_usb();
-    msleep(100);
     wifi_activate_usb();
 
     return rtw_drv_entry();
 }
 
-#ifdef CONFIG_RK_CHECK_UACCESS
-static void __exit rockchip_wifi_exit_module(void)
-#else
 void rockchip_wifi_exit_module(void)
-#endif
 {
-    printk("\n");
     printk("=======================================================\n");
     printk("==== Dislaunching Wi-Fi driver! (Powered by Rockchip) ====\n");
     printk("=======================================================\n");
@@ -2177,13 +2144,8 @@ void rockchip_wifi_exit_module(void)
     wifi_deactivate_usb();
 }
 
-#ifdef CONFIG_RK_CHECK_UACCESS
-late_initcall(rockchip_wifi_init_module);
+module_init(rockchip_wifi_init_module);
 module_exit(rockchip_wifi_exit_module);
-#else
-EXPORT_SYMBOL(rockchip_wifi_init_module);
-EXPORT_SYMBOL(rockchip_wifi_exit_module);
-#endif
 //module_init(rtw_drv_entry);
 //module_exit(rtw_drv_halt);
 

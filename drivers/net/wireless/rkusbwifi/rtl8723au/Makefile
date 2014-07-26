@@ -45,7 +45,6 @@ CONFIG_FTP_PROTECT = n
 CONFIG_WOWLAN = n
 CONFIG_GPIO_WAKEUP = n
 CONFIG_ODM_ADAPTIVITY = n
-CONFIG_MMC_PM_KEEP_POWER = n
 
 CONFIG_PLATFORM_I386_PC = n
 CONFIG_PLATFORM_ANDROID_X86 = n
@@ -74,7 +73,6 @@ CONFIG_PLATFORM_MIPS_JZ4760 = n
 CONFIG_PLATFORM_DMP_PHILIPS = n
 CONFIG_PLATFORM_TI_DM365 = n
 CONFIG_PLATFORM_MSTAR_TITANIA12 = n
-CONFIG_PLATFORM_MSTAR = n
 CONFIG_PLATFORM_SZEBOOK = n
 CONFIG_PLATFORM_ARM_SUNxI = n
 CONFIG_PLATFORM_ARM_SUN6I = n
@@ -368,14 +366,9 @@ ifeq ($(CONFIG_ODM_ADAPTIVITY), y)
 EXTRA_CFLAGS += -DCONFIG_ODM_ADAPTIVITY
 endif
 
-ifeq ($(CONFIG_MMC_PM_KEEP_POWER), y)
-EXTRA_CFLAGS += -DCONFIG_MMC_PM_KEEP_POWER
-endif
-
 ifeq ($(CONFIG_RTL8188E), y)
 ifeq ($(CONFIG_WOWLAN), y)
 EXTRA_CFLAGS += -DCONFIG_WOWLAN
-EXTRA_CFLAGS += -DCONFIG_MMC_PM_KEEP_POWER
 endif
 ifeq ($(CONFIG_GPIO_WAKEUP), y)
 EXTRA_CFLAGS += -DCONFIG_GPIO_WAKEUP
@@ -419,19 +412,11 @@ ARCH := arm
 endif
 
 ifeq ($(CONFIG_PLATFORM_MSTAR_TITANIA12), y)
-EXTRA_CFLAGS += -DCONFIG_LITTLE_ENDIAN -DCONFIG_PLATFORM_MSTAR -DCONFIG_PLATFORM_MSTAR_TITANIA12
+EXTRA_CFLAGS += -DCONFIG_LITTLE_ENDIAN -DCONFIG_PLATFORM_MSTAR_TITANIA12
 ARCH:=mips
 CROSS_COMPILE:= /usr/src/Mstar_kernel/mips-4.3/bin/mips-linux-gnu-
 KVER:= 2.6.28.9
 KSRC:= /usr/src/Mstar_kernel/2.6.28.9/
-endif
-
-ifeq ($(CONFIG_PLATFORM_MSTAR), y)
-EXTRA_CFLAGS += -DCONFIG_LITTLE_ENDIAN -DCONFIG_PLATFORM_MSTAR
-ARCH:=arm
-CROSS_COMPILE:= /usr/src/bin/arm-none-linux-gnueabi-
-KVER:= 3.1.10
-KSRC:= /usr/src/Mstar_kernel/3.1.10/
 endif
 
 ifeq ($(CONFIG_PLATFORM_ANDROID_X86), y)
@@ -627,8 +612,8 @@ EXTRA_CFLAGS += -DCONFIG_DETECT_CPWM_BY_POLLING -DCONFIG_DETECT_C2H_BY_POLLING
 endif
 ARCH := arm
 #CROSS_COMPILE := /usr/src/release_fae_version/toolchain/arm-eabi-4.4.0/bin/arm-eabi-
-#KSRC := /usr/src/release_fae_version/kernel25_A7_281x
-MODULE_NAME := 8723au
+KSRC := /home/duke/jb_4.2/kernel
+MODULE_NAME := wlan
 endif
 
 ifeq ($(CONFIG_PLATFORM_ARM_URBETTER), y)
@@ -712,15 +697,10 @@ EXTRA_CFLAGS += -DCONFIG_CONCURRENT_MODE
 EXTRA_CFLAGS += -DCONFIG_IOCTL_CFG80211 -DRTW_USE_CFG80211_STA_EVENT
 EXTRA_CFLAGS += -DCONFIG_P2P_IPS -DCONFIG_QOS_OPTIMIZATION
 ARCH := arm
+CROSS_COMPILE := /home/android_sdk/Allwinner/a31/android-jb42/lichee/buildroot/output/external-toolchain/bin/arm-linux-gnueabi-
 KVER  := 3.3.0
-#Android-JB42
-#CROSS_COMPILE := /home/android_sdk/Allwinner/a31/android-jb42/lichee/buildroot/output/external-toolchain/bin/arm-linux-gnueabi-
-#KSRC :=/home/android_sdk/Allwinner/a31/android-jb42/lichee/linux-3.3
-
-#Android-KK44
-CROSS_COMPILE := /home/android_sdk/Allwinner/a31/android-kk44/A3x-KK-SDK/lichee/buildroot/output/external-toolchain/bin/arm-linux-gnueabi-
-KSRC :=/home/android_sdk/Allwinner/a31/android-kk44/A3x-KK-SDK/lichee/linux-3.3
-
+#KSRC:= ../lichee/linux-3.3/
+KSRC :=/home/android_sdk/Allwinner/a31/android-jb42/lichee/linux-3.3
 ifeq ($(CONFIG_USB_HCI), y)
 MODULE_NAME := 8188eu_sw
 endif
@@ -728,7 +708,7 @@ endif
 
 ifeq ($(CONFIG_PLATFORM_ARM_SUN7I), y)
 EXTRA_CFLAGS += -DCONFIG_LITTLE_ENDIAN
-EXTRA_CFLAGS += -DCONFIG_PLATFORM_ARM_SUN7I
+EXTRA_CFLAGS += -DCONFIG_PLATFORM_ARM_SUN6I
 ifeq ($(CONFIG_USB_HCI), y)
 EXTRA_CFLAGS += -DCONFIG_USE_USB_BUFFER_ALLOC_TX
 endif
@@ -738,25 +718,10 @@ EXTRA_CFLAGS += -DCONFIG_CONCURRENT_MODE
 EXTRA_CFLAGS += -DCONFIG_IOCTL_CFG80211 -DRTW_USE_CFG80211_STA_EVENT
 EXTRA_CFLAGS += -DCONFIG_P2P_IPS -DCONFIG_QOS_OPTIMIZATION
 ARCH := arm
-# Cross compile setting for Android 4.2 SDK-Miracast-sink
-#CROSS_COMPILE := /home/android_sdk/Allwinner/a20/sugar/lichee/out/android/common/buildroot/external-toolchain/bin/arm-linux-gnueabi-
-#KVER  := 3.3.0
-#KSRC :=/home/android_sdk/Allwinner/a20/sugar/lichee/linux-3.3
-
-# ===Cross compile setting for Android 4.2 SDK ===
-#CROSS_COMPILE :=/home/android_sdk/Allwinner/a20_evb/lichee/out/android/common/buildroot/external-toolchain/bin/arm-linux-gnueabi-
-#KVER  := 3.3.0
-#KSRC := /home/android_sdk/Allwinner/a20_evb/lichee/linux-3.3
-
-# ==== Cross compile setting for Android 4.3 SDK =====
-#CROSS_COMPILE := /home/android_sdk/Allwinner/a20/android-jb43/lichee/out/android/common/buildroot/external-toolchain/bin/arm-linux-gnueabi-
-#KVER  := 3.4.39
-#KSRC :=/home/android_sdk/Allwinner/a20/android-jb43/lichee/linux-3.4
-
-# ==== Cross compile setting for Android 4.4 SDK =====
-CROSS_COMPILE := /home/android_sdk/Allwinner/a20/android-kitkat44/lichee/out/android/common/buildroot/external-toolchain/bin/arm-linux-gnueabi-
-KVER  := 3.4.39
-KSRC :=/home/android_sdk/Allwinner/a20/android-kitkat44/lichee/linux-3.4
+CROSS_COMPILE := /home/android_sdk/Allwinner/a20/sugar/lichee/out/android/common/buildroot/external-toolchain/bin/arm-linux-gnueabi-
+KVER  := 3.3.0
+#KSRC:= ../lichee/linux-3.3/
+KSRC :=/home/android_sdk/Allwinner/a20/sugar/lichee/linux-3.3
 
 endif
 
@@ -819,16 +784,17 @@ ifeq ($(CONFIG_RTL8723A), y)
 $(MODULE_NAME)-$(CONFIG_MP_INCLUDED)+= core/rtw_bt_mp.o
 endif
 
-obj-$(CONFIG_RTL8723AU) := $(MODULE_NAME).o
+obj-$(CONFIG_RTL8723AS-VAU) := $(MODULE_NAME).o
 
 else
 
-export CONFIG_RTL8723AU = m
+export CONFIG_RTL8723AS-VAU = m
 
 all: modules
 
 modules:
-	$(MAKE) ARCH=$(ARCH) CROSS_COMPILE=$(CROSS_COMPILE) -C $(KSRC) M=$(shell pwd)  modules
+	$(MAKE) ARCH=$(ARCH) -C $(KSRC) M=$(shell pwd)  modules -j8
+	mv wlan.ko 8723au.ko
 
 strip:
 	$(CROSS_COMPILE)strip $(MODULE_NAME).ko --strip-unneeded

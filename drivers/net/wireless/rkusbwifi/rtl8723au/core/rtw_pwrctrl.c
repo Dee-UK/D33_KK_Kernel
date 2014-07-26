@@ -461,19 +461,15 @@ _func_enter_;
 
 		//polling cpwm
 		do{
-			rtw_mdelay_os(1);
+			rtw_msleep_os(1);
 			
 			//cpwm_now = rtw_read8(padapter, SDIO_LOCAL_BASE | SDIO_REG_HCPWM1);
 			rtw_hal_get_hwreg(padapter, HW_VAR_GET_CPWM, (u8 *)(&cpwm_now));
 			if ((cpwm_orig ^ cpwm_now) & 0x80)
 			{
 #ifdef CONFIG_LPS_LCLK
-				#ifdef CONFIG_RTL8723A
 				pwrpriv->cpwm = PS_STATE(cpwm_now);
-				#else // !CONFIG_RTL8723A
-				pwrpriv->cpwm = PS_STATE_S4;
-				#endif // !CONFIG_RTL8723A
-                          pwrpriv->cpwm_tog = cpwm_now & PS_TOGGLE;
+                                pwrpriv->cpwm_tog = cpwm_now & PS_TOGGLE;
 #endif
 				pollingRes = _SUCCESS;
 				break;
@@ -620,18 +616,16 @@ _func_enter_;
 				delay_ms = 20;
 				start_time = rtw_get_current_time();
 				do {
-					rtw_hal_get_hwreg(padapter, HW_VAR_SYS_CLKR, &val8);
-					if (!(val8 & BIT(4))){ //0x08 bit4 =1 --> in 32k, bit4 = 0 --> leave 32k
-						pwrpriv->cpwm = PS_STATE_S4;
-						break;
-					}
+					val8 = rtw_read8(padapter, 0x90);
+					if (!(val8 & BIT(0))) break;
 					if (rtw_get_passing_time_ms(start_time) > delay_ms)
 					{
 						DBG_871X("%s: Wait for FW 32K leave more than %u ms!!!\n", __FUNCTION__, delay_ms);
 						break;
 					}
-					rtw_usleep_os(100);
+						rtw_usleep_os(100);
 				} while (1);
+				pwrpriv->cpwm = PS_STATE_S4;
 			}
 #endif
 			rtw_hal_set_hwreg(padapter, HW_VAR_H2C_FW_PWRMODE, (u8 *)(&ps_mode));
