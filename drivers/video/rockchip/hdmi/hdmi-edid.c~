@@ -4,7 +4,7 @@
 #define hdmi_edid_error(fmt, ...) \
         printk(KERN_ERR pr_fmt(fmt), ##__VA_ARGS__)
 
-#if 0
+#if 1
 #define hdmi_edid_debug(fmt, ...) \
         printk(KERN_INFO pr_fmt(fmt), ##__VA_ARGS__)
 #else
@@ -21,24 +21,6 @@ typedef enum HDMI_EDID_ERRORCODE
 	E_HDMI_EDID_UNKOWNDATA,
 	E_HDMI_EDID_NOMEMORY
 }HDMI_EDID_ErrorCode;
-
-void base_modes_to_vic(struct hdmi_edid *pedid)
-{
-    struct fb_videomode *modes = pedid->specs->modedb; // list of all available timings (est, std, dtd)
-    int i, vic, count = pedid->specs->modedb_len; // vic could also be of type unsigned char
-
-    //printk("hdmi-edid.c *** base_modes_to_vic: count= %d\n", count);
-
-    for(i = 0; i &lt; count; i++)
-    {
-        vic = hdmi_videomode_to_vic(&modes[i]);
-        if (vic){
-            // printk("hdmi-edid.c *** base_modes_to_vic: added vic: %d\n", vic);
-            hdmi_add_vic(vic, &pedid->modelist);
-        }
-        i++;
-    }
-}
 
 static int hdmi_edid_checksum(unsigned char *buf)
 {

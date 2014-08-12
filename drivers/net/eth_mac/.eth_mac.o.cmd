@@ -1,4 +1,4 @@
-cmd_drivers/net/eth_mac/eth_mac.o := arm-linux-gnueabihf-gcc -Wp,-MD,drivers/net/eth_mac/.eth_mac.o.d  -nostdinc -isystem /usr/lib/gcc-cross/arm-linux-gnueabihf/4.8/include -I/home/darrell/android/rockchip/rk3188/arch/arm/include -Iarch/arm/include/generated -Iinclude  -include include/generated/autoconf.h -D__KERNEL__ -mlittle-endian -Iarch/arm/mach-rk3188/include -Iarch/arm/plat-rk/include -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -O2 -marm -fno-dwarf2-cfi-asm -mabi=aapcs-linux -mno-thumb-interwork -funwind-tables -D__LINUX_ARM_ARCH__=7 -march=armv7-a -msoft-float -Uarm -Wframe-larger-than=1024 -fno-stack-protector -Wno-unused-but-set-variable -fomit-frame-pointer -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack -DCC_HAVE_ASM_GOTO    -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(eth_mac)"  -D"KBUILD_MODNAME=KBUILD_STR(eth_mac)" -c -o drivers/net/eth_mac/eth_mac.o drivers/net/eth_mac/eth_mac.c
+cmd_drivers/net/eth_mac/eth_mac.o := arm-linux-gnueabihf-gcc -Wp,-MD,drivers/net/eth_mac/.eth_mac.o.d  -nostdinc -isystem /usr/lib/gcc-cross/arm-linux-gnueabihf/4.8/include -I/home/darrell/android/rockchip/rk3188/arch/arm/include -Iarch/arm/include/generated -Iinclude  -include include/generated/autoconf.h -D__KERNEL__ -mlittle-endian -Iarch/arm/mach-rk30/include -Iarch/arm/plat-rk/include -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -O2 -marm -fno-dwarf2-cfi-asm -mabi=aapcs-linux -mno-thumb-interwork -funwind-tables -D__LINUX_ARM_ARCH__=7 -march=armv7-a -msoft-float -Uarm -Wframe-larger-than=1024 -fno-stack-protector -Wno-unused-but-set-variable -fomit-frame-pointer -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack -DCC_HAVE_ASM_GOTO    -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(eth_mac)"  -D"KBUILD_MODNAME=KBUILD_STR(eth_mac)" -c -o drivers/net/eth_mac/eth_mac.o drivers/net/eth_mac/eth_mac.c
 
 source_drivers/net/eth_mac/eth_mac.o := drivers/net/eth_mac/eth_mac.c
 
@@ -248,11 +248,12 @@ deps_drivers/net/eth_mac/eth_mac.o := \
     $(wildcard include/config/have/tcm.h) \
     $(wildcard include/config/arm/patch/phys/virt.h) \
     $(wildcard include/config/arm/patch/phys/virt/16bit.h) \
-  arch/arm/mach-rk3188/include/mach/memory.h \
+  arch/arm/mach-rk30/include/mach/memory.h \
   arch/arm/plat-rk/include/plat/memory.h \
     $(wildcard include/config/arch/rk319x.h) \
   include/linux/version.h \
-  arch/arm/mach-rk3188/include/mach/io.h \
+  arch/arm/mach-rk30/include/mach/io.h \
+    $(wildcard include/config/arch/rk3066b.h) \
   arch/arm/plat-rk/include/plat/io.h \
   /home/darrell/android/rockchip/rk3188/arch/arm/include/asm/sizes.h \
   include/asm-generic/sizes.h \
@@ -315,7 +316,7 @@ deps_drivers/net/eth_mac/eth_mac.o := \
   /home/darrell/android/rockchip/rk3188/arch/arm/include/asm/param.h \
     $(wildcard include/config/hz.h) \
   /home/darrell/android/rockchip/rk3188/arch/arm/include/asm/timex.h \
-  arch/arm/mach-rk3188/include/mach/timex.h \
+  arch/arm/mach-rk30/include/mach/timex.h \
   arch/arm/plat-rk/include/plat/timex.h \
   include/linux/debugobjects.h \
     $(wildcard include/config/debug/objects.h) \

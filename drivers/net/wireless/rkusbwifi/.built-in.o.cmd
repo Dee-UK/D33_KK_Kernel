@@ -1,1 +1,1 @@
-cmd_drivers/net/wireless/rkusbwifi/built-in.o :=  arm-linux-gnueabihf-ld -EL    -r -o drivers/net/wireless/rkusbwifi/built-in.o drivers/net/wireless/rkusbwifi/rkcfg.o drivers/net/wireless/rkusbwifi/rtl8723au/built-in.o 
+cmd_drivers/net/wireless/rkusbwifi/built-in.o :=  arm-linux-gnueabihf-ld -EL    -r -o drivers/net/wireless/rkusbwifi/built-in.o drivers/net/wireless/rkusbwifi/rkcfg.o drivers/net/wireless/rkusbwifi/rtl8188eu/built-in.o 

@@ -1,0 +1,28 @@
+config MT5931
+	  depends on WLAN_80211 && MMC
+	  select WIRELESS_EXT
+	  select WEXT_PRIV
+	  select CFG80211
+          select NL80211_TESTMODE
+	  bool "MediaTek MT5931 USB Support"
+	  ---help---
+	    MediaTek MT5931 WiFi
+
+	
+config MT5931_MT6622
+	  depends on MT5931
+	  depends on WLAN_80211 && MMC
+	  select WIRELESS_EXT
+	  select WEXT_PRIV
+	  select CFG80211
+          select NL80211_TESTMODE
+	  bool "MediaTek MT6622 Bluetooth"
+	  ---help---
+	    MediaTek MT6622 WiFi Bluetooth support
+
+config MTK_MT5931
+	  depends on MT5931
+	bool "MediaTeK MT5931 KitKat SDIO Wifi Driver"
+
+
+

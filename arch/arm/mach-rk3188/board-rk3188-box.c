@@ -970,11 +970,11 @@ static struct rfkill_rk_platform_data rfkill_rk_platdata = {
     .type               = RFKILL_TYPE_BLUETOOTH,
 
     .poweron_gpio       = { // BT_REG_ON
-        .io             = RK30_PIN3_PD1, //RK30_PIN3_PC7,
+      .io             = RK30_PIN3_PD1, 
         .enable         = GPIO_HIGH,
         .iomux          = {
             .name       = "bt_poweron",
-            .fgpio      = GPIO3_D1,
+            .fgpio      = GPIO3_D1, 
         },
     },
 
@@ -984,7 +984,7 @@ static struct rfkill_rk_platform_data rfkill_rk_platdata = {
    }, 
 
     .wake_gpio          = { // BT_WAKE, use to control bt's sleep and wakeup
-        .io             = RK30_PIN3_PC7, // set io to INVALID_GPIO for disable it
+        .io             = RK30_PIN3_PC7, // set io to INVALID_GPIO for disable it - 
         .enable         = GPIO_HIGH,
         .iomux          = {
             .name       = "bt_wake",
@@ -1108,10 +1108,10 @@ struct platform_device rk_device_gps = {
 	};
 #endif
 
-#if defined(CONFIG_MT5931_MT6622)
+#if defined(CONFIG_MT5931_MT6622) || defined(CONFIG_MTK_MT6622)
 static struct mt6622_platform_data mt6622_platdata = {
 		    .power_gpio         = { // BT_REG_ON
-		    	.io             = RK30_PIN3_PD5, // set io to INVALID_GPIO for disable it
+		    	.io             = RK30_PIN3_PC7, //RK30_PIN3_PD5, // set io to INVALID_GPIO for disable it
 			    .enable         = GPIO_HIGH,
 			    .iomux          = {
 				    .name       = NULL,
@@ -1247,7 +1247,7 @@ static struct platform_device *devices[] __initdata = {
 #ifdef CONFIG_GPS_RK
 	&rk_device_gps,
 #endif
-#ifdef CONFIG_MT5931_MT6622
+#if defined(CONFIG_MT5931_MT6622) || defined(CONFIG_MTK_MT6622)
 	&device_mt6622,
 #endif
 /*$_rbox_$_modify_$_huangzhibao_begin$_20120508_$*/
@@ -2134,7 +2134,7 @@ static void __init machine_rk30_board_init(void)
 	    clk_set_rate(clk_get_sys("rk_serial.1", "uart"), 48*1000000);
 #endif
 
-#if defined(CONFIG_MT5931_MT6622)
+#if defined(CONFIG_MT5931_MT6622) || defined(CONFIG_MTK_MT6622)
 		clk_set_rate(clk_get_sys("rk_serial.0", "uart"), 24*1000000);
 #endif		
 }

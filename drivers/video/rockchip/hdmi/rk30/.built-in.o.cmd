@@ -1,0 +1,1 @@
+cmd_drivers/video/rockchip/hdmi/rk30/built-in.o :=  arm-linux-gnueabihf-ld -EL    -r -o drivers/video/rockchip/hdmi/rk30/built-in.o drivers/video/rockchip/hdmi/rk30/rk30_hdmi_hw.o drivers/video/rockchip/hdmi/rk30/rk30_hdmi.o 

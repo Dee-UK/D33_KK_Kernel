@@ -14,7 +14,7 @@
 @	compiled by GNU C version 4.8.2, GMP version 5.1.3, MPFR version 3.1.2-p3, MPC version 1.0.1
 @ GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 @ options passed:  -nostdinc
-@ -I /home/darrell/android/rockchip/kk/arch/arm/include
+@ -I /home/darrell/android/rockchip/rk3188/arch/arm/include
 @ -I arch/arm/include/generated -I include -I arch/arm/mach-rk3188/include
 @ -I arch/arm/plat-rk/include -imultilib sf -imultiarch arm-linux-gnueabi
 @ -D __KERNEL__ -D __LINUX_ARM_ARCH__=7 -U arm -D CC_HAVE_ASM_GOTO

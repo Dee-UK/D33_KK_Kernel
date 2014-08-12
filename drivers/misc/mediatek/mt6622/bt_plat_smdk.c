@@ -63,12 +63,13 @@ extern int mt6622_suspend_flag;
 /****************************************************************************
  *                           C O N S T A N T S                              *
 *****************************************************************************/
-#define MODULE_TAG         "[BT-PLAT] "
+//#define MODULE_TAG         "[BT-PLAT] "
+#define MODULE_TAG         "[MT6622] "
 
 /* SMDK platform PIN definition */
-#define GPIO_BT_PWR_EN_PIN	46
-#define GPIO_BT_RESET_PIN	46 //if pwr_en & reset not connect can use this pin
-#define GPIO_BT_EINT_PIN	49
+#define GPIO_BT_PWR_EN_PIN	RK30_PIN3_PC7
+//#define GPIO_BT_RESET_PIN	46 //if pwr_en & reset not connect can use this pin
+#define GPIO_BT_EINT_PIN	RK30_PIN3_PD2
 //#define GPIO_BT_URXD_PIN ( EXYNOS4_GPA0(0) )  //wenhui: due to panda has configed uart interface
 //#define GPIO_BT_UTXD_PIN ( EXYNOS4_GPA0(1) )
 

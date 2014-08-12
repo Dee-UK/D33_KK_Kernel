@@ -18,6 +18,11 @@ config RK_HDMI_DEBUG
 		help
 		  Enableds verbose debugging the the HDMI drivers
 
+config DMT_OVERRIDE
+	bool "DMT instead of CEA modes"
+        depends on RK_HDMI
+        default n
+
 config RK_HDMI_CTL_CODEC
 		bool "Mute Codec When HDMI Actived"
 		depends on RK_HDMI

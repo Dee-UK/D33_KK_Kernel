@@ -408,13 +408,13 @@ static int rk30_gpiolib_to_irq(struct gpio_chip *chip, unsigned offset)
 
 static void rk30_gpiolib_dbg_show(struct seq_file *s, struct gpio_chip *chip)
 {
-#if 0
+//#if 0
 	int i;
 
 	for (i = 0; i < chip->ngpio; i++) {
 		unsigned pin = chip->base + i;
-		struct gpio_chip *chip = pin_to_gpioChip(pin);
-		u32 bit = pin_to_bit(pin);
+		struct gpio_chip *chip = pin_to_gpio_chip(pin);
+		u32 bit = gpio_to_bit(pin); //pin_to_bit
 		const char *gpio_label;
 		
 		if(!chip ||!bit)
@@ -422,21 +422,24 @@ static void rk30_gpiolib_dbg_show(struct seq_file *s, struct gpio_chip *chip)
 		
 		gpio_label = gpiochip_is_requested(chip, i);
 		if (gpio_label) {
-			seq_printf(s, "[%s] GPIO%s%d: ",
-				   gpio_label, chip->label, i);
+			//seq_printf(s, "[%s] GPIO%s%d: ",gpio_label, chip->label, i);
+			printk("[%s] GPIO%s%d: ", gpio_label, chip->label, i);
 			
 			if (!chip || !bit)
 			{
-				seq_printf(s, "!chip || !bit\t");
+				//seq_printf(s, "!chip || !bit\t");
+				printk("!chip || !bit\t");
 				return;
 			}
 				
 			GPIOSetPinDirection(chip,bit,GPIO_IN);
-			seq_printf(s, "pin=%d,level=%d\t", pin,GPIOGetPinLevel(chip,bit));
-			seq_printf(s, "\t");
+			//seq_printf(s, "pin=%d,level=%d\t", pin,GPIOGetPinLevel(chip,bit));
+			//seq_printf(s, "\t");
+			printk("pin=%d,level=%d\t", pin, GPIOGetPinLevel(chip,bit));
+			printk("\t");
 		}
 	}
-#endif
+//#endif
 }
 
 static void rk30_gpio_irq_handler(unsigned int irq, struct irq_desc *desc)
@@ -488,6 +491,8 @@ void __init rk30_gpio_init(void)
 {
 	unsigned int i, j, pin, irqs = 0;
 	struct rk30_gpio_bank *bank;
+	struct seq_file s;
+	struct gpio_chip chip;
 
 	bank = rk30_gpio_banks;
 
@@ -515,6 +520,8 @@ void __init rk30_gpio_init(void)
 		irq_set_chained_handler(bank->irq, rk30_gpio_irq_handler);
 	}
 	printk("%s: %d gpio irqs in %d banks\n", __func__, irqs, ARRAY_SIZE(rk30_gpio_banks));
+//	Dump the GPIO registers
+	rk30_gpiolib_dbg_show(&s, &chip);
 }
 
 #ifdef CONFIG_PM

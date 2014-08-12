@@ -58,7 +58,7 @@
 #include "bt_hwctl.h"
 
 
-#define BT_HWCTL_DEBUG_EN     0
+#define BT_HWCTL_DEBUG_EN     1
 
 #define BT_HWCTL_ALERT(f, s...) \
     printk(KERN_ALERT "BTHWCTL " f, ## s)

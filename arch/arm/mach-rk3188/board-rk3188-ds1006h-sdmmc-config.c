@@ -97,38 +97,21 @@ int rk31sdk_get_sdmmc0_pin_io_voltage(void)
 	#define RK30SDK_WIFI_GPIO_POWER_ENABLE_VALUE    GPIO_HIGH
 
 #elif defined(CONFIG_MT7601)
-    #define RK30SDK_WIFI_GPIO_POWER_N               RK30_PIN3_PA0            
-    #define RK30SDK_WIFI_GPIO_POWER_ENABLE_VALUE    GPIO_HIGH
+	#define RK30SDK_WIFI_GPIO_POWER_N               RK30_PIN3_PA0            
+	#define RK30SDK_WIFI_GPIO_POWER_ENABLE_VALUE    GPIO_HIGH
  	
 #elif defined(CONFIG_MT5931_MT6622) || defined(CONFIG_MT5931) || defined(CONFIG_MTK_MT5931)
 
-	#ifdef  CONFIG_MACH_RK3168_LR097 
-	    	#define RK30SDK_WIFI_GPIO_POWER_N               RK30_PIN3_PD0 
-	    	#define RK30SDK_WIFI_GPIO_POWER_ENABLE_VALUE    GPIO_HIGH
-		#define RK30SDK_WIFI_GPIO_POWER_PIN_NAME        "wifi_power"
-		#define RK30SDK_WIFI_GPIO_POWER_IOMUX_FGPIO     GPIO3_D0
-	    	//#define RK30SDK_WIFI_GPIO_RESET_N 	            RK30_PIN3_PD1
-	    	//#define RK30SDK_WIFI_GPIO_RESET_ENABLE_VALUE    GPIO_HIGH
 
-	#else
-		#if DS1006H_V1_2_SUPPORT
-			#define RK30SDK_WIFI_GPIO_POWER_N               RK30_PIN3_PD0
-	    		#define RK30SDK_WIFI_GPIO_POWER_ENABLE_VALUE    GPIO_HIGH
-			#define RK30SDK_WIFI_GPIO_POWER_PIN_NAME        "wifi_power"
-			#define RK30SDK_WIFI_GPIO_POWER_IOMUX_FGPIO     GPIO3_D0
-		#else
-	    		#define RK30SDK_WIFI_GPIO_POWER_N               RK30_PIN0_PA5
-	    		#define RK30SDK_WIFI_GPIO_POWER_ENABLE_VALUE    GPIO_HIGH
-			#define RK30SDK_WIFI_GPIO_POWER_PIN_NAME        "wifi_power"
-			#define RK30SDK_WIFI_GPIO_POWER_IOMUX_FGPIO     GPIO0_A5
-	 
-			#define RK30SDK_WIFI_GPIO_RESET_N               RK30_PIN3_PD1
-			#define RK30SDK_WIFI_GPIO_RESET_ENABLE_VALUE    GPIO_HIGH
-			#define RK30SDK_WIFI_GPIO_RESET_PIN_NAME        "wifi_reset"
-			#define RK30SDK_WIFI_GPIO_RESET_IOMUX_FGPIO     GPIO3_D1
-	
-	    	#endif
-	#endif
+	#define RK30SDK_WIFI_GPIO_POWER_N               RK30_PIN3_PD0 
+	#define RK30SDK_WIFI_GPIO_POWER_ENABLE_VALUE    GPIO_HIGH
+	#define RK30SDK_WIFI_GPIO_POWER_PIN_NAME        "wifi_power"
+	#define RK30SDK_WIFI_GPIO_POWER_IOMUX_FGPIO     GPIO3_D0 
+
+	#define RK30SDK_WIFI_GPIO_RESET_N               RK30_PIN3_PD1
+	#define RK30SDK_WIFI_GPIO_RESET_ENABLE_VALUE    GPIO_HIGH
+	#define RK30SDK_WIFI_GPIO_RESET_PIN_NAME        "wifi_reset"
+	#define RK30SDK_WIFI_GPIO_RESET_IOMUX_FGPIO     GPIO3_D1
 
 #elif defined(CONFIG_MT6620)
     #define COMBO_MODULE_MT6620_CDT    1  // to control antsel2,antsel3 and gps_lan foot when using AcSip or Cdtech chip. 

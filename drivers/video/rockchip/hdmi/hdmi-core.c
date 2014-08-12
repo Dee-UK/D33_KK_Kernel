@@ -131,7 +131,10 @@ static void hdmi_wq_parse_edid(struct hdmi *hdmi)
 	}
 	
 	rc = hdmi_edid_parse_base(buff, &extendblock, pedid);
-	extendblock=0; //dr fix for edid to force no CEA-fallback
+
+#if defined(DMT_OVERRIDE)
+	extendblock=0; //DR - This forces DMT instead of CEA modes into EDID
+#endif
 	if(rc) {
 		dev_err(hdmi->dev, "[HDMI] parse edid base block error\n");
 		goto out;

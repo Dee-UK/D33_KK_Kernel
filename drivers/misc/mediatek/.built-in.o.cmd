@@ -1,1 +1,1 @@
-cmd_drivers/misc/mediatek/built-in.o :=  rm -f drivers/misc/mediatek/built-in.o; arm-linux-gnueabihf-ar rcsD drivers/misc/mediatek/built-in.o
+cmd_drivers/misc/mediatek/built-in.o :=  arm-linux-gnueabihf-ld -EL    -r -o drivers/misc/mediatek/built-in.o drivers/misc/mediatek/mt6622/built-in.o 

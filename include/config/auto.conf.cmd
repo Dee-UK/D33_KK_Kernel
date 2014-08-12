@@ -469,7 +469,6 @@ deps_config := \
 	drivers/net/usb/Kconfig \
 	drivers/net/wimax/i2400m/Kconfig \
 	drivers/net/wimax/Kconfig \
-	drivers/net/wireless/mt5931_kk/Kconfig \
 	drivers/net/wireless/combo_mt66xx/Kconfig \
 	drivers/net/wireless/rkwifi/Kconfig \
 	drivers/net/wireless/esp8089/Kconfig \
@@ -482,7 +481,7 @@ deps_config := \
 	drivers/net/wireless/rkusbwifi/rtl8188eu/Kconfig \
 	drivers/net/wireless/rkusbwifi/rtl8192du/Kconfig \
 	drivers/net/wireless/rkusbwifi/rtl8192cu/Kconfig \
-	drivers/net/wireless/mt5931/Kconfig \
+	drivers/net/wireless/mt5931_kk/Kconfig \
 	drivers/net/wireless/Kconfig \
 	drivers/net/tokenring/Kconfig \
 	drivers/net/benet/Kconfig \
