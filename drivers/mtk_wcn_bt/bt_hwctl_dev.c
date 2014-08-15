@@ -58,7 +58,7 @@
 #include "bt_hwctl.h"
 
 
-#define BT_HWCTL_DEBUG_EN     1
+#define BT_HWCTL_DEBUG_EN 0
 
 #define BT_HWCTL_ALERT(f, s...) \
     printk(KERN_ALERT "BTHWCTL " f, ## s)
@@ -84,7 +84,7 @@
 wait_queue_head_t eint_wait;
 int eint_gen;
 int eint_mask;
-int eint_handle_method = 0; // 0: for 4.1; 1: for 4.2 
+int eint_handle_method = 1; // 0: for 4.1; 1: for 4.2 
 struct wake_lock mt6622_irq_wakelock;
 int mt6622_suspend_flag;
 

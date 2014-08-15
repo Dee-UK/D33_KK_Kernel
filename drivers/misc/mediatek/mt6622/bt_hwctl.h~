@@ -63,7 +63,7 @@ extern void *mt_bt_get_platform_data(void);
 extern int mt6622_suspend(struct platform_device *pdev, pm_message_t state);
 extern int mt6622_resume(struct platform_device *pdev);
 
-#define BT_HWCTL_DEBUG  1
+#define BT_HWCTL_DEBUG 1
 
 #define BT_HWCTL_INFO(f, s...)   printk(KERN_INFO "BTHWCTL: " f, ## s)
 #define BT_HWCTL_ALERT(f, s...)  printk(KERN_ALERT "BTHWCTL: " f, ## s)
