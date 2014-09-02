@@ -166,7 +166,7 @@ int rk31sdk_get_sdio_wifi_voltage(void)
 #elif defined(CONFIG_MT6620) 
     voltage = 2800 ; //power 2800V
 #elif defined(CONFIG_RDA5990)||defined(CONFIG_RTL8723AS) || defined(CONFIG_RTL8189ES)  \
-	|| defined(CONFIG_RTL8723BS)
+	|| defined(CONFIG_RTL8723BS) || defined(CONFIG_RTL8723AU)
     voltage = 3300 ; //power 3300V
 #else
     //default, sdio use 3.0V
