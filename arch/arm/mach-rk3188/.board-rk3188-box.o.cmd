@@ -42,8 +42,12 @@ deps_arch/arm/mach-rk3188/board-rk3188-box.o := \
     $(wildcard include/config/rk30/pwm/regulator.h) \
     $(wildcard include/config/rk/pwm/volt/max/1450.h) \
     $(wildcard include/config/rfkill/rk.h) \
+    $(wildcard include/config/ap6210/alt.h) \
     $(wildcard include/config/mt5931/mt6622.h) \
     $(wildcard include/config/mtk/mt6622.h) \
+    $(wildcard include/config/esp8089.h) \
+    $(wildcard include/config/rtl8188eu.h) \
+    $(wildcard include/config/mt5931.h) \
     $(wildcard include/config/snd/soc/rk/hdmi/codec.h) \
     $(wildcard include/config/snd/rk/soc/hdmi.h) \
     $(wildcard include/config/leds/gpio/platform.h) \
@@ -2275,7 +2279,6 @@ deps_arch/arm/mach-rk3188/board-rk3188-box.o := \
   arch/arm/plat-rk/include/plat/key.h \
   arch/arm/mach-rk3188/board-rk3188-ds1006h-sdmmc-config.c \
     $(wildcard include/config/rtl8192cu.h) \
-    $(wildcard include/config/rtl8188eu.h) \
     $(wildcard include/config/rtl8723au.h) \
     $(wildcard include/config/rtl8192du.h) \
     $(wildcard include/config/bcm4329.h) \
@@ -2284,10 +2287,7 @@ deps_arch/arm/mach-rk3188/board-rk3188-box.o := \
     $(wildcard include/config/rtl8189es.h) \
     $(wildcard include/config/rtl8723bs.h) \
     $(wildcard include/config/rtl8723as.h) \
-    $(wildcard include/config/ap6210/alt.h) \
-    $(wildcard include/config/esp8089.h) \
     $(wildcard include/config/mt7601.h) \
-    $(wildcard include/config/mt5931.h) \
     $(wildcard include/config/mtk/mt5931.h) \
     $(wildcard include/config/rda5990.h) \
   arch/arm/mach-rk3188/../plat-rk/rk-sdmmc-ops.c \

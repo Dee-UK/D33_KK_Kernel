@@ -11,6 +11,7 @@ deps_drivers/net/wireless/rkwifi/rk_wifi_config.o := \
     $(wildcard include/config/rk/check/uaccess.h) \
     $(wildcard include/config/ap6181.h) \
     $(wildcard include/config/ap6210.h) \
+    $(wildcard include/config/ap6210/alt.h) \
     $(wildcard include/config/rkwifi/24m.h) \
     $(wildcard include/config/ap6476.h) \
     $(wildcard include/config/ap6493.h) \

@@ -60,7 +60,7 @@ int rkwifi_set_firmware(char *fw, char *nvram)
 	sprintf(nvram, "%s%s", ANDROID_FW_PATH, "nvram_AP6181.txt");
 #endif
 
-#ifdef CONFIG_AP6210
+#if defined (CONFIG_AP6210) || defined (CONFIG_AP6210_ALT)
     sprintf(fw, "%s%s", ANDROID_FW_PATH, "fw_RK901.bin");
 #ifdef CONFIG_RKWIFI_26M
 	sprintf(nvram, "%s%s", ANDROID_FW_PATH, "nvram_AP6210.txt");

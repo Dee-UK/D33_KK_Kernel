@@ -771,25 +771,6 @@ deps_drivers/bluetooth/hci_ldisc.o := \
   include/net/netlink.h \
   include/net/bluetooth/hci_core.h \
   include/net/bluetooth/hci.h \
-  include/linux/wakelock.h \
-    $(wildcard include/config/has/wakelock.h) \
-    $(wildcard include/config/wakelock/stat.h) \
-  drivers/bluetooth/../mtk_wcn_bt/bt_hwctl.h \
-  include/linux/irq.h \
-    $(wildcard include/config/irq/release/method.h) \
-    $(wildcard include/config/generic/pending/irq.h) \
-  /home/darrell/android/rockchip/rk3188/arch/arm/include/asm/irq_regs.h \
-  include/asm-generic/irq_regs.h \
-  include/linux/irqdesc.h \
-    $(wildcard include/config/irq/preflow/fasteoi.h) \
-    $(wildcard include/config/sparse/irq.h) \
-  /home/darrell/android/rockchip/rk3188/arch/arm/include/asm/hw_irq.h \
-  include/linux/rfkill-rk.h \
-  include/linux/rfkill.h \
-    $(wildcard include/config/rfkill.h) \
-  include/linux/leds.h \
-    $(wildcard include/config/leds/triggers.h) \
-    $(wildcard include/config/leds/trigger/ide/disk.h) \
   drivers/bluetooth/hci_uart.h \
 
 drivers/bluetooth/hci_ldisc.o: $(deps_drivers/bluetooth/hci_ldisc.o)

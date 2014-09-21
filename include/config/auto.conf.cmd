@@ -473,7 +473,6 @@ deps_config := \
 	drivers/net/wireless/rkwifi/Kconfig \
 	drivers/net/wireless/esp8089/Kconfig \
 	drivers/net/wireless/rtl8723bs/Kconfig \
-	drivers/net/wireless/rtl8723as/Kconfig \
 	drivers/net/wireless/ar6003/Kconfig \
 	drivers/net/wireless/rkusbwifi/mt7601/Kconfig \
 	drivers/net/wireless/rkusbwifi/rt5370/Kconfig \
