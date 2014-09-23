@@ -974,7 +974,6 @@ static struct rfkill_rk_platform_data rfkill_rk_platdata = {
 #else
 		.io      = RK30_PIN3_PC7, 
 		//INVALID_GPIO, 
-		//RK30_PIN3_PC7, - 'normal'
 		//RK30_PIN3_PD1
 #endif
 		.enable         = GPIO_HIGH,
@@ -985,10 +984,9 @@ static struct rfkill_rk_platform_data rfkill_rk_platdata = {
 #else
 			.fgpio      = GPIO3_C7
 			// NULL
-			// GPIO3_C7 - 'normal'
 			// GPIO3_D1
 #endif
-			},//IO_MUX
+			},
 		},
 
 	.reset_gpio         = { // BT_RST
@@ -1016,6 +1014,11 @@ static struct rfkill_rk_platform_data rfkill_rk_platdata = {
 			.enable     = GPIO_LOW,      // GPIO_LOW for falling, set 0 for rising
 			.iomux      = {
 				.name   = "bt_wake_host",
+#if defined(CONFIG_AP6210_ALT)
+				.fgpio	= GPIO3_C7,
+#else
+				.fgpio	= NULL,
+#endif
 			},
 		},
 	},
@@ -1127,7 +1130,6 @@ struct platform_device rk_device_gps = {
 #endif
 
 #if defined(CONFIG_MT5931_MT6622) || defined(CONFIG_MTK_MT6622)
-//defined(CONFIG_ESP8089)
 static struct mt6622_platform_data mt6622_platdata = {
 		    .power_gpio         = { // BT_REG_ON
 #if defined(CONFIG_RTL8188EU)
@@ -1146,7 +1148,7 @@ static struct mt6622_platform_data mt6622_platdata = {
 				},
 		    },
 
-		    .reset_gpio         = { // BT_RST
+		    .rts_gpio         = { // BT_RTS
 #if defined(CONFIG_RTL8188EU)
 			.io             = RK30_PIN1_PA3,
 #elif defined(CONFIG_ESP8089)
@@ -1158,7 +1160,19 @@ static struct mt6622_platform_data mt6622_platdata = {
 #endif
 		        .enable         = GPIO_HIGH,
 		        .iomux          = {
-		            .name       = "bt_rst",
+		            .name       = "bt_rts",
+		        },
+		    },
+
+		    .reset_gpio         = { // BT_RESET
+#if defined(CONFIG_MT5931)
+			.io             = RK30_PIN0_PD7,
+#else
+			.io             = INVALID_GPIO,
+#endif
+		        .enable         = GPIO_HIGH,
+		        .iomux          = {
+		            .name       = "bt_reset",
 		        },
 		    },
 

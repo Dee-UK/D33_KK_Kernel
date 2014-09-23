@@ -1427,19 +1427,6 @@ CONFIG_WLAN_80211=y
 CONFIG_ESP8089=y
 # CONFIG_BK3515A_COMBO is not set
 # CONFIG_RKWIFI is not set
-# CONFIG_BCM4330 is not set
-# CONFIG_RK903 is not set
-# CONFIG_RK901 is not set
-# CONFIG_AP6181 is not set
-# CONFIG_AP6210 is not set
-# CONFIG_AP6210_ALT is not set
-# CONFIG_AP6330 is not set
-# CONFIG_AP6476 is not set
-# CONFIG_AP6493 is not set
-# CONFIG_GB86302I is not set
-# CONFIG_RKWIFI_37_4M is not set
-# CONFIG_RKWIFI_26M is not set
-# CONFIG_RKWIFI_24M is not set
 
 #
 # Enable WiMAX (Networking options) to see the WiMAX drivers
