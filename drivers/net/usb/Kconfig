@@ -253,6 +253,24 @@ config USB_NET_DM9620
 	  This option adds support for Davicom DM9620 based USB 1.1
 	  10/100 Ethernet adapters.
 
+config USB_NET_CH9x00
+	tristate "CH9x00 based USB 2.0"
+	depends on USB_USBNET
+	select CRC32
+	default y
+	help
+	  This option adds support for CH9x00 based USB 2.0
+	  10/100 Ethernet adapters.
+
+config USB_NET_QF9700
+	tristate "QF9700 based USB 2.0"
+	depends on USB_USBNET
+	select CRC32
+	default y
+	help
+	  This option adds support for QF9700 based USB 2.0
+	  10/100 Ethernet adapters.
+
 config USB_NET_SR9700
 	tristate "WilLing Electrnic SR9700 based USB 2.0"
 	depends on USB_USBNET

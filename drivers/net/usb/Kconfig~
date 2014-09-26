@@ -139,7 +139,7 @@ config USB_USBNET
 	  To compile this driver as a module, choose M here: the
 	  module will be called usbnet.
 
-Config USB_NET_AX88179
+config USB_NET_AX88179
 	tristate "ASIX AX88179 Based USB 3.0 Ethernet Adapters"
 	depends on USB_USBNET
 	select CRC32
